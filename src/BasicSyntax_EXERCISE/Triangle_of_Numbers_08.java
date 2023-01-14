@@ -1,8 +1,8 @@
-package Basic_Syntax_Conditional_Statements_And_Loops_LAB;
+package BasicSyntax_EXERCISE;
 
 import java.util.Scanner;
 
-public class Multiplication_Table_10 {
+public class Triangle_of_Numbers_08 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
