@@ -12,14 +12,14 @@ public class Strong_Number_06 {
         int sumFact = 0;
 
         while (number > 0) {
-            int lastNumber = number % 10;
+            int lastNumber = number % 10; // вземам последната цифра от числото
 
             int fact = 1;
             for (int i = 1; i <= lastNumber; i++) {
                 fact *= i;
             }
             sumFact += fact;
-            number = number / 10;
+            number = number / 10; // махам последната цифта от числото за да мога да взема следващата му
         }
         if (strongNum == sumFact) {
             System.out.println("yes");
