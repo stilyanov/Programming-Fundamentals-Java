@@ -10,7 +10,6 @@ public class P07_CondenseArrayToNumber {
         int[] numbersArr = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
         int[] condensed = new int[numbersArr.length - 1];
-        int sum = 0;
 
         for (int i = 0; i < numbersArr.length; i++) {
             int currentElement = numbersArr[i];
