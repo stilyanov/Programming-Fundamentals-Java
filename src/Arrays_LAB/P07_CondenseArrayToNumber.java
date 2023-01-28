@@ -12,8 +12,18 @@ public class P07_CondenseArrayToNumber {
         int[] condensed = new int[numbersArr.length - 1];
 
         for (int i = 0; i < numbersArr.length; i++) {
-            int currentElement = numbersArr[i];
-
+            if (numbersArr.length == 1) {
+                break;
+            }
+            if (i == numbersArr.length - 1) {
+                int[] condensedNew = new int[condensed.length - 1];
+                i = -1;
+                numbersArr = condensed;
+                condensed = condensedNew;
+            } else {
+                condensed[i] = numbersArr[i] + numbersArr[i + 1];
+            }
         }
+        System.out.println(numbersArr[0]);
     }
 }
