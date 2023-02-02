@@ -1,16 +1,24 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+
 import java.util.Scanner;
 
 public class demo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        List<String> names = new ArrayList<>();
+        int number = Integer.parseInt(scanner.nextLine());
 
-        names.add("Vladimir");
-        names.add("Greta");
-        names.add("Miroslava");
+        int evenSum = 0;
 
+        while (number > 0){
+            int lastDigit = number % 10;
+
+            if (lastDigit % 2 == 0) {
+                evenSum += lastDigit;
+            }
+
+            number = number / 10;
+        }
     }
 }
