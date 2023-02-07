@@ -1,9 +1,9 @@
-package Arrays_EXERCISE;
+package EXAMS;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class P09_ArrayModifier {
+public class ArrayModifier {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
