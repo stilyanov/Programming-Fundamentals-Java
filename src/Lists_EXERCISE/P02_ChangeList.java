@@ -17,7 +17,7 @@ public class P02_ChangeList {
             if (command.startsWith("Delete")) {
                 //Delete {element} - delete all elements in the array which are equal to the given element
                 int elementToDelete = Integer.parseInt(command.split(" ")[1]);
-                numbers.removeAll(Collections.singleton(elementToDelete));
+                numbers.removeAll(Arrays.asList(elementToDelete));
             } else if (command.startsWith("Insert")) {
                 //Insert {element} {position} - insert element at the given position
                 int elementToInsert = Integer.parseInt(command.split(" ")[1]);

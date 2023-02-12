@@ -10,31 +10,37 @@ public class P01_Train {
         Scanner scanner = new Scanner(System.in);
 
         List<Integer> wagons = Arrays.stream(scanner.nextLine().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
-
-        int maximumCapacity = Integer.parseInt(scanner.nextLine());
+        int maxCapacity = Integer.parseInt(scanner.nextLine()); //макс брой пасажери във всеки един вагон
 
         String command = scanner.nextLine();
-        while (!command.equals("end")) {
-            String[] tokens = command.split(" ");
-
-            if (tokens.length == 2) {
-                int passenger = Integer.parseInt(tokens[1]);
-                wagons.add(passenger);
+        while(!command.equals("end")) {
+            //"Add {passengers}" -> ["Add", "5"]
+            //"{passengers}" -> ["45"]
+            String[] commandData = command.split(" ");//["Add", "5"] или ["45"]
+            if (commandData[0].equals("Add")) {
+                //команда Add
+                int passengers = Integer.parseInt(commandData[1]);
+                wagons.add(passengers);
             } else {
-                int passengerToAdd = Integer.parseInt(tokens[0]);
-                for (int i = 0; i < wagons.size(); i++) {
-                    int passengers = wagons.get(i);
-                    if (passengerToAdd + passengers <= maximumCapacity) {
-                        wagons.add(i, passengers + passengerToAdd);
-                        wagons.remove(i + 1);
+                //команда -> число
+                int passengersToAdd = Integer.parseInt(commandData[0]);
+                for(int index = 0; index < wagons.size(); index++) {
+                    int currentWagon = wagons.get(index);
+                    if(currentWagon + passengersToAdd <= maxCapacity) {
+                        wagons.set(index, currentWagon + passengersToAdd);
                         break;
                     }
                 }
             }
+
             command = scanner.nextLine();
         }
+
         for (int wagon : wagons) {
             System.out.print(wagon + " ");
         }
+
+        //wagons.forEach(wagon -> System.out.print(wagon + " "));
+
     }
 }

@@ -7,20 +7,18 @@ public class P07_AppendArrays {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String[] input = scanner.nextLine().split("\\|");
+        String input = scanner.nextLine(); //"1 2 3 |4 5 6 |  7  8"
+        List<String> listSeparatedByPipe = Arrays.stream(input.split("\\|")).collect(Collectors.toList());
+        //"1 2 3 |4 5 6 |  7  8" -> split -> ["1 2 3 ", "4 5 6 ", "  7  8"] -> {"1 2 3 ", "4 5 6 ", "  7  8"}
+        Collections.reverse(listSeparatedByPipe);
+        // reverse ->  {"  7  8", "4 5 6 ", "1 2 3 "}
 
-        List<String> outputList = new ArrayList<>();
-
-        for (int i = 0; i < input.length; i++) {
-            String[] currentArray = input[i].split("\\s+");
-
-            for (int j = currentArray.length - 1; j >= 0; j--) {
-                if (!currentArray[j].equals("")) {
-                    outputList.add(0, currentArray[j]);
-                }
-            }
-        }
-
-        outputList.forEach(e -> System.out.print(e + " "));
+        //list.toString() -> "7 8 4 5 6 1 2 3"
+        System.out.println(listSeparatedByPipe.toString() //"[  7  8, 4 5 6 , 1 2 3 ]"
+                .replace("[", "") //"  7  8, 4 5 6 , 1 2 3 ]"
+                .replace("]", "") //"  7  8, 4 5 6 , 1 2 3 "
+                .trim()  //"7  8, 4 5 6 , 1 2 3"
+                .replaceAll(",", "") //"7  8 4 5 6  1 2 3"
+                .replaceAll("\\s+", " ")); //"7 8 4 5 6 1 2 3"
     }
 }

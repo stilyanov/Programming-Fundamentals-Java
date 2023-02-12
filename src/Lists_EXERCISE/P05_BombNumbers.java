@@ -9,33 +9,25 @@ public class P05_BombNumbers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        List<Integer> numbers = Arrays.stream(scanner.nextLine().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+        List<String> elements = Arrays.stream(scanner.nextLine()
+                        .split("\\s+"))
+                .collect(Collectors.toList());
 
-        String nextInput = scanner.nextLine();
-        int bomb = Integer.parseInt(nextInput.split(" ")[0]);
-        int power = Integer.parseInt(nextInput.split(" ")[1]);
+        String[] data = scanner.nextLine().split("\\s+");
+        String bombNumber = data[0];
+        int power = Integer.parseInt(data[1]);
 
-        //1 2 2 4 2 2 2 9
-        //4 2
+        while (elements.contains(bombNumber)) {
+            int elementIndex = elements.indexOf(bombNumber);
 
-        while (numbers.contains(bomb)) {
-            int indexBomb = numbers.indexOf(bomb);
-            int start = indexBomb - power;
-            int end = indexBomb + power;
-            if (start < 0) {
-                start = 0;
-            }
-            if (end >= numbers.size() - 1) {
-                end = numbers.size() - 1;
-            }
-            for (int i = start; i <= end; i++) {
-                numbers.remove(start);
+            int left = Math.max(0, elementIndex - power);
+            int right = Math.min(elementIndex + power, elements.size() - 1);
+
+            for (int i = right; i >= left; i--) {
+                elements.remove(i);
+
             }
         }
-        int sum = 0;
-        for (int number : numbers) {
-            sum += number;
-        }
-        System.out.println(sum);
+        System.out.println(elements.stream().mapToInt(Integer::parseInt).sum());
     }
 }
