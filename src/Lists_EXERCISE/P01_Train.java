@@ -30,8 +30,8 @@ public class P01_Train {
                         break;
                     }
                 }
-                command = scanner.nextLine();
             }
+            command = scanner.nextLine();
         }
         for (int wagon : wagons) {
             System.out.print(wagon + " ");

@@ -31,11 +31,11 @@ public class P05_BombNumbers {
             for (int i = start; i <= end; i++) {
                 numbers.remove(start);
             }
-            int sum = 0;
-            for (int number : numbers) {
-                sum += number;
-            }
-            System.out.println(sum);
         }
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        System.out.println(sum);
     }
 }
