@@ -6,14 +6,14 @@ public class P03_Substring {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String toRemove = scanner.nextLine();
+        String toReplace = scanner.nextLine();
         String text = scanner.nextLine();
 
-        int index = text.indexOf(toRemove);
+        int index = text.indexOf(toReplace);
         while (index != -1) {
-            text = text.replace(toRemove, "");
+            text = text.replace(toReplace, "");
 
-            index = text.indexOf(toRemove);
+            index = text.indexOf(toReplace);
         }
         System.out.println(text);
     }
