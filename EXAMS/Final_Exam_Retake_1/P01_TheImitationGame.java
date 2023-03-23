@@ -1,6 +1,8 @@
+package Final_Exam_Retake_1;
+
 import java.util.Scanner;
 
-public class demo {
+public class P01_TheImitationGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -14,13 +16,21 @@ public class demo {
                     //•	"Move {number of letters}":
                     //o	Moves the first n letters to the back of the string
                     int numberOfLetters = Integer.parseInt(operations.split("\\|")[1]);
-                    String elementsToMove = encryptedMessage.substring(0, numberOfLetters);
-                    String remainingElements = encryptedMessage.substring(numberOfLetters);
-                    remainingElements.concat(elementsToMove);
+                    String elementsToMove = encryptedMessage.substring(0, numberOfLetters); //zzH
+                    String remainingElements = encryptedMessage.substring(numberOfLetters); //e
+                    encryptedMessage = remainingElements + elementsToMove;
 
                     break;
 
                 case "Insert":
+                    //•	"Insert {index} {value}":
+                    //o	Inserts the given value before the given index in the string
+                    int index = Integer.parseInt(operations.split("\\|")[1]);
+                    String value = operations.split("\\|")[2];
+                    String leftElements = encryptedMessage.substring(0, index);
+                    String rightElements = encryptedMessage.substring(index);
+                    leftElements.concat(value).concat(rightElements);
+                    encryptedMessage = leftElements + value + rightElements;
 
                     break;
 
@@ -30,13 +40,11 @@ public class demo {
                     String subString = operations.split("\\|")[1];
                     String replacement = operations.split("\\|")[2];
 
-                    encryptedMessage.replace(subString, replacement);
+                    encryptedMessage = encryptedMessage.replace(subString, replacement);
                     break;
             }
-
-
             operations = scanner.nextLine();
         }
+        System.out.printf("The decrypted message is: %s", encryptedMessage);
     }
 }
-
