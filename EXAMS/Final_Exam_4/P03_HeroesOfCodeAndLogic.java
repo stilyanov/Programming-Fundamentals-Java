@@ -8,7 +8,7 @@ public class P03_HeroesOfCodeAndLogic {
 
         int n = Integer.parseInt(scanner.nextLine());
 
-        Map<String, List<Integer>> heroesMap = new HashMap<>();
+        Map<String, List<Integer>> heroesMap = new LinkedHashMap<>();
 
         for (int i = 1; i <= n; i++) {
             String[] inputData = scanner.nextLine().split(" ");
